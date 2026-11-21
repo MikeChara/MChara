@@ -93,6 +93,14 @@ export const recipes: Recipe[] = [
         width: 1500,
         height: 1125,
       },
+      {
+        instructionNumber: 17,
+        src: "/images/recipes/pizza-crust.jpeg",
+        alt: "A hand lifting a slice of pizza to show the crisp, airy crust",
+        caption: "A crisp, airy crust is the final sign that the pizza is ready to serve.",
+        width: 1500,
+        height: 1000,
+      },
     ],
     instructions: [
       "Start by putting your mixing bowl on the kitchen scales and resetting the display to zero. Pour in the cold water, reset the display, then weigh in the yeast. The water should feel cold, never warm.",
