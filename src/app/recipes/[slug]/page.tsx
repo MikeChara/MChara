@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipeBySlug, recipes } from "@/lib/recipes";
 import { serializeJsonLd, siteUrl } from "@/lib/site";
@@ -59,7 +60,7 @@ export default async function RecipePage({ params }: RecipePageProps) {
     "@type": "Recipe",
     name: recipe.name,
     description: recipe.description,
-    image: [recipe.image],
+    image: [new URL(recipe.image, siteUrl).toString()],
     author: {
       "@type": "Person",
       name: "Mike Chara",
@@ -92,11 +93,14 @@ export default async function RecipePage({ params }: RecipePageProps) {
         <p>{recipe.description}</p>
       </header>
       <article className="page-content recipe-detail">
-        <div
+        <Image
           className="recipe-detail-image"
-          role="img"
-          aria-label={recipe.name}
-          style={{ backgroundImage: `url("${recipe.image}")` }}
+          src={recipe.image}
+          alt={`Finished ${recipe.name.toLowerCase()}`}
+          width={1600}
+          height={1200}
+          priority
+          sizes="(max-width: 760px) 100vw, 900px"
         />
         <div className="recipe-facts" aria-label="Recipe details">
           <p><span>Prep</span>{recipe.prepTimeMinutes} min hands-on</p>
@@ -142,6 +146,20 @@ export default async function RecipePage({ params }: RecipePageProps) {
                       >
                         {video.title} <span aria-hidden="true">↗</span>
                       </a>
+                    ))}
+                  {recipe.instructionImages
+                    .filter((image) => image.instructionNumber === index + 1)
+                    .map((image) => (
+                      <figure className="method-image" key={image.src}>
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          width={image.width}
+                          height={image.height}
+                          sizes="(max-width: 760px) 100vw, 720px"
+                        />
+                        <figcaption>{image.caption}</figcaption>
+                      </figure>
                     ))}
                 </div>
               </li>

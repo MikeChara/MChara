@@ -21,6 +21,14 @@ export type Recipe = {
     title: string;
     url: string;
   }[];
+  instructionImages: {
+    instructionNumber: number;
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }[];
 };
 
 export const recipes: Recipe[] = [
@@ -29,8 +37,7 @@ export const recipes: Recipe[] = [
     name: "Three-day slow-ferment thin-crust pizza",
     description:
       "Thin-crust, 12-inch pizzas with a relaxed three-day fridge ferment, a crisp base, and a light, airy edge.",
-    image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1400&q=85",
+    image: "/images/recipes/pizza-finished.jpg",
     category: "Slow-fermented favourite",
     prepTimeMinutes: 45,
     cookTimeMinutes: 6,
@@ -75,6 +82,16 @@ export const recipes: Recipe[] = [
         instructionNumber: 6,
         title: "Watch: How to Ball Dough — Gozney",
         url: "https://www.youtube.com/watch?v=Vo5OW8Xkah4",
+      },
+    ],
+    instructionImages: [
+      {
+        instructionNumber: 15,
+        src: "/images/recipes/pizza-on-peel-web.jpg",
+        alt: "Topped thin-crust pizza resting on a semolina-dusted pizza peel, ready for the oven",
+        caption: "Check that the topped pizza still slides freely on the peel before baking.",
+        width: 1500,
+        height: 1125,
       },
     ],
     instructions: [

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { recipes } from "@/lib/recipes";
 
@@ -24,10 +25,14 @@ export default function RecipesPage() {
               className="recipe-item"
               href={`/recipes/${recipe.slug}`}
               key={recipe.slug}
-              style={{
-                backgroundImage: `linear-gradient(0deg, rgba(23,35,27,.82), rgba(23,35,27,.02) 90%), url("${recipe.image}")`,
-              }}
             >
+              <Image
+                className="recipe-card-image"
+                src={recipe.image}
+                alt=""
+                fill
+                sizes="(max-width: 760px) 100vw, 360px"
+              />
               <p className="eyebrow">{recipe.category}</p>
               <h2>{recipe.name}</h2>
               <span className="recipe-card-link">View recipe <span aria-hidden="true">→</span></span>
