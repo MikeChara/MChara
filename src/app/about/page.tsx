@@ -1,8 +1,36 @@
+import type { Metadata } from "next";
 import ConstructionBanner from "@/components/construction-banner";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbJsonLd, createPageMetadata, webpageJsonLd } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "About Mike Chara",
+  description: "Meet Mike Chara, author of A Weight of Many and writer of stories, projects, and recipes.",
+  path: "/about",
+  keywords: ["Mike Chara", "author", "A Weight of Many", "The Cadence Saints"],
+  type: "website",
+});
 
 export default function AboutPage() {
+  const pageJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      webpageJsonLd({
+        name: "About Mike Chara",
+        description: "Meet Mike Chara, author and creator.",
+        path: "/about",
+        type: "AboutPage",
+      }),
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "About", path: "/about" },
+      ]),
+    ],
+  };
+
   return (
     <main className="page-main content-width">
+      <JsonLd data={pageJsonLd} />
       <header className="page-intro">
         <p className="eyebrow">A proper hello</p>
         <h1>I&apos;m Mike. I like making things.</h1>

@@ -1,9 +1,38 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import ConstructionBanner from "@/components/construction-banner";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbJsonLd, createPageMetadata, webpageJsonLd } from "@/lib/seo";
+import { projects } from "@/lib/content";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Projects",
+  description: "Explore Mike Chara's software projects, web experiments, writing, and creative work beyond the keyboard.",
+  path: "/projects",
+  keywords: ["Mike Chara projects", "web developer", "software projects", "ice skating coach website", "creative projects"],
+  type: "website",
+});
 
 export default function ProjectsPage() {
+  const pageJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      webpageJsonLd({
+        name: "Projects",
+        description: "Software and non-software projects by Mike Chara.",
+        path: "/projects",
+        type: "CollectionPage",
+      }),
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Projects", path: "/projects" },
+      ]),
+    ],
+  };
+
   return (
     <main className="page-main content-width">
+      <JsonLd data={pageJsonLd} />
       <header className="page-intro">
         <p className="eyebrow">Things in motion</p>
         <h1>Projects & places.</h1>
@@ -17,16 +46,19 @@ export default function ProjectsPage() {
             <p>Websites, tools, and experiments built in code.</p>
           </header>
           <div className="project-list">
-            <article className="project-item"><p className="eyebrow">In development</p><h3>MikeChara.co.uk</h3><p>A personal website bringing together writing, projects, and recipes.</p></article>
-            <article className="project-item">
-              <p className="eyebrow">Live project</p>
-              <h3>Ice skating coach</h3>
-              <p>A website for Coach Chantelle, offering ice skating lessons in Slough.</p>
-              <div className="project-actions">
-                <Link href="https://coachchantelle.app" target="_blank" rel="noreferrer">Visit website <span aria-hidden="true">↗</span></Link>
-                <Link href="https://github.com/MikeChara/iceskatingcoach" target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
+            {projects.filter((project) => project.category === "Software").map((project) => (
+              <article className="project-item" key={project.slug}>
+                <p className="eyebrow">{project.status}</p>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+                {(project.url || project.sourceUrl) && (
+                  <div className="project-actions">
+                    {project.url && <Link href={project.url} target="_blank" rel="noreferrer">Visit website <span aria-hidden="true">↗</span></Link>}
+                    {project.sourceUrl && <Link href={project.sourceUrl} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></Link>}
+                  </div>
+                )}
+              </article>
+            ))}
           </div>
         </section>
         <section className="project-group" aria-labelledby="non-software-projects">
@@ -37,8 +69,13 @@ export default function ProjectsPage() {
           </header>
           <ConstructionBanner message="This part of the portfolio is still taking shape. More non-software projects and details will be added here." />
           <div className="project-list">
-            <article className="project-item"><p className="eyebrow">Writing</p><h3>The journal</h3><p>Personal stories, field notes, and ideas still finding their shape.</p></article>
-            <article className="project-item"><p className="eyebrow">At the table</p><h3>The recipe box</h3><p>A growing collection of favourite meals and well-used recipes.</p></article>
+            {projects.filter((project) => project.category === "Non-software").map((project) => (
+              <article className="project-item" key={project.slug}>
+                <p className="eyebrow">{project.status}</p>
+                <h3>{project.name}</h3>
+                <p>{project.description}</p>
+              </article>
+            ))}
           </div>
         </section>
         <div className="social-links" aria-label="Social media">

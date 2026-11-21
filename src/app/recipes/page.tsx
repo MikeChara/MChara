@@ -1,16 +1,36 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbJsonLd, createPageMetadata, webpageJsonLd } from "@/lib/seo";
 import { recipes } from "@/lib/recipes";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Recipes",
   description:
     "Browse favourite recipes from Mike Chara, with ingredients and instructions for every dish.",
-  alternates: { canonical: "/recipes" },
-};
+  path: "/recipes",
+  keywords: ["Mike Chara recipes", "slow ferment pizza", "thin crust pizza", "home cooking"],
+  type: "website",
+});
 
 export default function RecipesPage() {
+  const pageJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      webpageJsonLd({
+        name: "Mike Chara recipes",
+        description: "A collection of favourite recipes.",
+        path: "/recipes",
+        type: "CollectionPage",
+      }),
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Recipes", path: "/recipes" },
+      ]),
+    ],
+  };
+
   return (
     <main className="page-main content-width">
       <header className="page-intro">
@@ -41,6 +61,7 @@ export default function RecipesPage() {
         </div>
         <p className="recipe-note">More favourites will be added to the collection.</p>
       </section>
+      <JsonLd data={pageJsonLd} />
     </main>
   );
 }

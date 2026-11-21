@@ -7,6 +7,14 @@ export const authorBookJsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": `${siteUrl.toString()}#website`,
+      url: siteUrl.toString(),
+      name: "Mike Chara",
+      inLanguage: "en-GB",
+      publisher: { "@id": authorId },
+    },
+    {
       "@type": "Person",
       "@id": authorId,
       name: "Mike Chara",

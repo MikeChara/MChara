@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { getRecipeBySlug, recipes } from "@/lib/recipes";
-import { serializeJsonLd, siteUrl } from "@/lib/site";
 import PortionIngredients from "./portion-ingredients";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 
 type RecipePageProps = {
   params: Promise<{ slug: string }>;
@@ -25,26 +27,14 @@ export async function generateMetadata({ params }: RecipePageProps): Promise<Met
 
   const canonical = `/recipes/${recipe.slug}`;
 
-  return {
+  return createPageMetadata({
     title: recipe.name,
     description: recipe.description,
-    authors: [{ name: "Mike Chara", url: siteUrl.toString() }],
+    path: canonical,
     keywords: [recipe.name, recipe.category, "Mike Chara", "recipe"],
-    alternates: { canonical },
-    openGraph: {
-      type: "article",
-      url: canonical,
-      title: recipe.name,
-      description: recipe.description,
-      images: [{ url: recipe.image, alt: recipe.name }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: recipe.name,
-      description: recipe.description,
-      images: [recipe.image],
-    },
-  };
+    image: recipe.image,
+    type: "article",
+  });
 }
 
 export default async function RecipePage({ params }: RecipePageProps) {
@@ -57,36 +47,42 @@ export default async function RecipePage({ params }: RecipePageProps) {
 
   const recipeJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Recipe",
-    name: recipe.name,
-    description: recipe.description,
-    image: [new URL(recipe.image, siteUrl).toString()],
-    author: {
-      "@type": "Person",
-      name: "Mike Chara",
-      url: siteUrl.toString(),
-    },
-    prepTime: `PT${recipe.prepTimeMinutes}M`,
-    cookTime: `PT${recipe.cookTimeMinutes}M`,
-    totalTime: recipe.totalTimeIso,
-    recipeYield: `${recipe.servings} servings`,
-    recipeCategory: recipe.category,
-    recipeIngredient: recipe.ingredients.map(
-      (ingredient) => `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`,
-    ),
-    recipeInstructions: recipe.instructions.map((text, index) => ({
-      "@type": "HowToStep",
-      position: index + 1,
-      text,
-    })),
+    "@graph": [
+      {
+        "@type": "Recipe",
+        name: recipe.name,
+        description: recipe.description,
+        image: [recipe.image],
+        author: {
+          "@type": "Person",
+          name: "Mike Chara",
+          url: siteUrl.toString(),
+        },
+        prepTime: `PT${recipe.prepTimeMinutes}M`,
+        cookTime: `PT${recipe.cookTimeMinutes}M`,
+        totalTime: recipe.totalTimeIso,
+        recipeYield: `${recipe.servings} servings`,
+        recipeCategory: recipe.category,
+        recipeIngredient: recipe.ingredients.map(
+          (ingredient) => `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`,
+        ),
+        recipeInstructions: recipe.instructions.map((text, index) => ({
+          "@type": "HowToStep",
+          position: index + 1,
+          text,
+        })),
+      },
+      breadcrumbJsonLd([
+        { name: "Home", path: "/" },
+        { name: "Recipes", path: "/recipes" },
+        { name: recipe.name, path: `/recipes/${recipe.slug}` },
+      ]),
+    ],
   };
 
   return (
     <main className="page-main content-width">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(recipeJsonLd) }}
-      />
+      <JsonLd data={recipeJsonLd} />
       <header className="page-intro recipe-detail-intro">
         <p className="eyebrow">{recipe.category}</p>
         <h1>{recipe.name}</h1>

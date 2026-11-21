@@ -1,8 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/json-ld";
+import { breadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Mike Chara",
+  description: "The official website of Mike Chara: author of A Weight of Many, journal writer, maker, and curator of stories and recipes.",
+  path: "/",
+  keywords: ["Mike Chara", "A Weight of Many", "The Cadence Saints", "author", "journal", "projects", "recipes"],
+  type: "website",
+});
 
 export default function Home() {
+  const pageJsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [breadcrumbJsonLd([{ name: "Home", path: "/" }])],
+  };
+
   return (
     <main>
+      <JsonLd data={pageJsonLd} />
       <section className="home-hero" aria-labelledby="home-title">
         <div className="hero-image" role="img" aria-label="A quiet path through a green landscape" />
         <div className="hero-content">
