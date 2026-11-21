@@ -7,6 +7,8 @@ export type JournalPost = {
   readingTime: string;
   image?: string;
   paragraphs: string[];
+  linkUrl?: string;
+  linkLabel?: string;
 };
 
 export type Project = {
@@ -21,37 +23,19 @@ export type Project = {
 
 export const journalPosts: JournalPost[] = [
   {
-    slug: "notes-from-the-long-way-round",
-    title: "Notes from the long way round",
-    description: "On getting lost, looking up, and letting a day unfold at its own pace.",
-    datePublished: "2026-10-12",
-    readingTime: "6 min read",
+    slug: "the-cadence-saints",
+    title: "The Cadence Saints",
+    description:
+      "An update on A Weight of Many, progress on the next book, and a thank-you to readers.",
+    datePublished: "2026-11-21",
+    readingTime: "2 min read",
     paragraphs: [
-      "The quickest route is not always the one that leaves the most room for noticing. A small change of direction can turn an ordinary journey into a collection of details worth remembering.",
-      "I am learning to treat curiosity as useful information rather than distraction. It is often the detour that reveals where an idea really wants to go.",
+      "I’m pleased to share that the first book in The Cadence Saints series, A Weight of Many, is now available for sale.",
+      "Work on the second book has begun. I’m aiming to finish it by the end of 2027, though development has to fit around my full-time work as a software developer. I’m sorry progress isn’t always as quick as I would like.",
+      "Thank you to everyone who has read A Weight of Many or taken an interest in the series. If you enjoyed it, please consider leaving a review; honest reviews help other readers discover the book and mean a great deal to me.",
     ],
-  },
-  {
-    slug: "the-case-for-making-things-slowly",
-    title: "The case for making things slowly",
-    description: "A reminder that the best parts of a project are often the bits you did not plan.",
-    datePublished: "2026-09-04",
-    readingTime: "5 min read",
-    paragraphs: [
-      "Making slowly creates time to notice whether the original plan still makes sense. Good work rarely follows a perfectly straight line.",
-      "The pauses are part of the process: a place to test, revise, discard, and begin again with a little more understanding.",
-    ],
-  },
-  {
-    slug: "a-sunday-with-nowhere-to-be",
-    title: "A Sunday with nowhere to be",
-    description: "Good bread, an open window, and the luxury of an unhurried afternoon.",
-    datePublished: "2026-07-19",
-    readingTime: "4 min read",
-    paragraphs: [
-      "An empty afternoon can feel strange before it feels restful. Once the day stops asking to be optimised, small rituals begin to take up the space.",
-      "Fresh bread, an open window, and no particular deadline are a modest collection of things. Together, they are enough.",
-    ],
+    linkUrl: "https://amzn.eu/d/09vWLaPq",
+    linkLabel: "Get A Weight of Many",
   },
 ];
 

@@ -7,9 +7,16 @@ import { projects } from "@/lib/content";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Projects",
-  description: "Explore Mike Chara's software projects, web experiments, writing, and creative work beyond the keyboard.",
+  description:
+    "Explore Mike Chara's software projects, web experiments, writing, and creative work beyond the keyboard.",
   path: "/projects",
-  keywords: ["Mike Chara projects", "web developer", "software projects", "ice skating coach website", "creative projects"],
+  keywords: [
+    "Mike Chara projects",
+    "web developer",
+    "software projects",
+    "ice skating coach website",
+    "creative projects",
+  ],
   type: "website",
 });
 
@@ -34,53 +41,91 @@ export default function ProjectsPage() {
     <main className="page-main content-width">
       <JsonLd data={pageJsonLd} />
       <header className="page-intro">
-        <p className="eyebrow">Things in motion</p>
-        <h1>Projects & places.</h1>
-        <p>A few things I’m building, exploring, or sharing beyond this little corner of the web.</p>
+        <p className="eyebrow">Things</p>
+        <h1>Projects.</h1>
+        <p>
+          A few things I’ve built, am building, or am otherwise messing around
+          with.
+        </p>
       </header>
       <section className="page-content" aria-label="Projects and social links">
         <section className="project-group" aria-labelledby="software-projects">
           <header className="project-group-heading">
             <p className="eyebrow">01 / Digital</p>
             <h2 id="software-projects">Software projects</h2>
-            <p>Websites, tools, and experiments built in code.</p>
+            <p>Websites etc.</p>
           </header>
           <div className="project-list">
-            {projects.filter((project) => project.category === "Software").map((project) => (
-              <article className="project-item" key={project.slug}>
-                <p className="eyebrow">{project.status}</p>
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-                {(project.url || project.sourceUrl) && (
-                  <div className="project-actions">
-                    {project.url && <Link href={project.url} target="_blank" rel="noreferrer">Visit website <span aria-hidden="true">↗</span></Link>}
-                    {project.sourceUrl && <Link href={project.sourceUrl} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></Link>}
-                  </div>
-                )}
-              </article>
-            ))}
+            {projects
+              .filter((project) => project.category === "Software")
+              .map((project) => (
+                <article className="project-item" key={project.slug}>
+                  <p className="eyebrow">{project.status}</p>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  {(project.url || project.sourceUrl) && (
+                    <div className="project-actions">
+                      {project.url && (
+                        <Link
+                          href={project.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Visit website <span aria-hidden="true">↗</span>
+                        </Link>
+                      )}
+                      {project.sourceUrl && (
+                        <Link
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Source code <span aria-hidden="true">↗</span>
+                        </Link>
+                      )}
+                    </div>
+                  )}
+                </article>
+              ))}
           </div>
         </section>
-        <section className="project-group" aria-labelledby="non-software-projects">
+        <section
+          className="project-group"
+          aria-labelledby="non-software-projects"
+        >
           <header className="project-group-heading">
-            <p className="eyebrow">02 / Beyond the screen</p>
+            <p className="eyebrow">02 / Other projects</p>
             <h2 id="non-software-projects">Non-software projects</h2>
-            <p>Stories, food, and creative work made away from the keyboard.</p>
+            <p>Stories, food, random projects.</p>
           </header>
           <ConstructionBanner message="This part of the portfolio is still taking shape. More non-software projects and details will be added here." />
           <div className="project-list">
-            {projects.filter((project) => project.category === "Non-software").map((project) => (
-              <article className="project-item" key={project.slug}>
-                <p className="eyebrow">{project.status}</p>
-                <h3>{project.name}</h3>
-                <p>{project.description}</p>
-              </article>
-            ))}
+            {projects
+              .filter((project) => project.category === "Non-software")
+              .map((project) => (
+                <article className="project-item" key={project.slug}>
+                  <p className="eyebrow">{project.status}</p>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                </article>
+              ))}
           </div>
         </section>
         <div className="social-links" aria-label="Social media">
-          <Link href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook ↗</Link>
-          <Link href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram ↗</Link>
+          <Link
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Facebook ↗
+          </Link>
+          <Link
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Instagram ↗
+          </Link>
         </div>
       </section>
     </main>

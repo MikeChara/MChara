@@ -45,7 +45,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializeJsonLd(authorBookJsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(authorBookJsonLd),
+          }}
         />
         <div className="site-shell">
           <header className="site-header">
@@ -65,14 +67,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </header>
           {children}
           <footer className="site-footer">
-            <Link className="footer-wordmark" href="/">Mike Chara</Link>
+            <Link className="footer-wordmark" href="/">
+              Mike Chara
+            </Link>
             <p>Stories, good things, and something worth sharing.</p>
             <div className="footer-links">
               <Link href="/blog">Journal</Link>
               <Link href="/projects">Elsewhere</Link>
               <Link href="/recipes">The recipe box</Link>
             </div>
-            <span className="copyright">© {new Date().getFullYear()} Mike Chara</span>
+            <span className="copyright">
+              © {new Date().getFullYear()} Mike Chara
+            </span>
           </footer>
         </div>
       </body>

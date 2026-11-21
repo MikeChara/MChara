@@ -17,7 +17,9 @@ export function generateStaticParams() {
   return recipes.map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: RecipePageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: RecipePageProps): Promise<Metadata> {
   const { slug } = await params;
   const recipe = getRecipeBySlug(slug);
 
@@ -64,7 +66,8 @@ export default async function RecipePage({ params }: RecipePageProps) {
         recipeYield: `${recipe.servings} servings`,
         recipeCategory: recipe.category,
         recipeIngredient: recipe.ingredients.map(
-          (ingredient) => `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`,
+          (ingredient) =>
+            `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`,
         ),
         recipeInstructions: recipe.instructions.map((text, index) => ({
           "@type": "HowToStep",
@@ -99,24 +102,46 @@ export default async function RecipePage({ params }: RecipePageProps) {
           sizes="(max-width: 760px) 100vw, 900px"
         />
         <div className="recipe-facts" aria-label="Recipe details">
-          <p><span>Prep</span>{recipe.prepTimeMinutes} min hands-on</p>
-          <p><span>Ferment</span>2–5 days, best on day 3</p>
-          <p><span>Bake</span>About {recipe.cookTimeMinutes} min</p>
+          <p>
+            <span>Prep</span>
+            {recipe.prepTimeMinutes} min hands-on
+          </p>
+          <p>
+            <span>Ferment</span>2–5 days, best on day 3
+          </p>
+          <p>
+            <span>Bake</span>About {recipe.cookTimeMinutes} min
+          </p>
         </div>
         <div className="recipe-detail-columns">
-          <section className="equipment-section" aria-labelledby="equipment-heading">
+          <section
+            className="equipment-section"
+            aria-labelledby="equipment-heading"
+          >
             <h2 id="equipment-heading">Equipment</h2>
-            <ul>{recipe.equipment.map((item) => <li key={item}>{item}</li>)}</ul>
+            <ul>
+              {recipe.equipment.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </section>
         </div>
-        <PortionIngredients ingredients={recipe.ingredients} basePortions={recipe.servings} />
-        <section className="recipe-notes" aria-labelledby="recipe-notes-heading">
+        <PortionIngredients
+          ingredients={recipe.ingredients}
+          basePortions={recipe.servings}
+        />
+        <section
+          className="recipe-notes"
+          aria-labelledby="recipe-notes-heading"
+        >
           <div className="recipe-section-heading">
             <p className="eyebrow">A few things worth knowing</p>
             <h2 id="recipe-notes-heading">Notes</h2>
           </div>
           <ul>
-            {recipe.notes.map((note) => <li key={note}>{note}</li>)}
+            {recipe.notes.map((note) => (
+              <li key={note}>{note}</li>
+            ))}
           </ul>
         </section>
         <section className="recipe-method" aria-labelledby="method-heading">
@@ -127,7 +152,9 @@ export default async function RecipePage({ params }: RecipePageProps) {
           <ol>
             {recipe.instructions.map((instruction, index) => (
               <li key={instruction}>
-                <span className="method-step-number">{String(index + 1).padStart(2, "0")}</span>
+                <span className="method-step-number">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <div>
                   <p>{instruction}</p>
                   {recipe.instructionVideos

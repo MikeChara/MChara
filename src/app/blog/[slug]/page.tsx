@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/json-ld";
 import { getJournalPostBySlug, journalPosts } from "@/lib/content";
@@ -14,7 +15,9 @@ export function generateStaticParams() {
   return journalPosts.map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getJournalPostBySlug(slug);
 
@@ -71,7 +74,21 @@ export default async function JournalPostPage({ params }: PostPageProps) {
           <p>{post.description}</p>
           <time dateTime={post.datePublished}>{post.datePublished}</time>
         </header>
-        {post.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        {post.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
+        ))}
+        {post.linkUrl && post.linkLabel && (
+          <p>
+            <Link
+              href={post.linkUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="text-link"
+            >
+              {post.linkLabel}
+            </Link>
+          </p>
+        )}
       </article>
     </main>
   );

@@ -10,7 +10,12 @@ export const metadata: Metadata = createPageMetadata({
   description:
     "Browse favourite recipes from Mike Chara, with ingredients and instructions for every dish.",
   path: "/recipes",
-  keywords: ["Mike Chara recipes", "slow ferment pizza", "thin crust pizza", "home cooking"],
+  keywords: [
+    "Mike Chara recipes",
+    "slow ferment pizza",
+    "thin crust pizza",
+    "home cooking",
+  ],
   type: "website",
 });
 
@@ -35,8 +40,12 @@ export default function RecipesPage() {
     <main className="page-main content-width">
       <header className="page-intro">
         <p className="eyebrow">The recipe box</p>
-        <h1>Good food, shared.</h1>
-        <p>Favourite things to cook, eat, and make again. The sort of recipes that find their way into your regular rotation.</p>
+        <h1>Good food.</h1>
+        <p>
+          A collection of recipes I’ve enjoyed making, adjusted to my own taste
+          over time, and frankly needed somewhere to dump so I don’t forget
+          them.
+        </p>
       </header>
       <section className="page-content" aria-label="Favourite recipes">
         <div className="recipe-list">
@@ -55,11 +64,15 @@ export default function RecipesPage() {
               />
               <p className="eyebrow">{recipe.category}</p>
               <h2>{recipe.name}</h2>
-              <span className="recipe-card-link">View recipe <span aria-hidden="true">→</span></span>
+              <span className="recipe-card-link">
+                View recipe <span aria-hidden="true">→</span>
+              </span>
             </Link>
           ))}
         </div>
-        <p className="recipe-note">More favourites will be added to the collection.</p>
+        <p className="recipe-note">
+          More favourites will be added to the collection.
+        </p>
       </section>
       <JsonLd data={pageJsonLd} />
     </main>
