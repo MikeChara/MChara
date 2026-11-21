@@ -97,7 +97,7 @@ export const recipes: Recipe[] = [
         instructionNumber: 17,
         src: "/images/recipes/pizza-crust.jpeg",
         alt: "A hand lifting a slice of pizza to show the crisp, airy crust",
-        caption: "A crisp, airy crust is the final sign that the pizza is ready to serve.",
+        caption: "A crisp, airy crust is a sign that you nailed it.",
         width: 1500,
         height: 1000,
       },
