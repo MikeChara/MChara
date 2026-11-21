@@ -30,8 +30,8 @@ export const journalPosts: JournalPost[] = [
     datePublished: "2026-11-21",
     readingTime: "2 min read",
     paragraphs: [
-      "I’m pleased to share that the first book in The Cadence Saints series, A Weight of Many, is now available for sale.",
-      "Work on the second book has begun. I’m aiming to finish it by the end of 2027, though development has to fit around my full-time work as a software developer. I’m sorry progress isn’t always as quick as I would like.",
+      "I’m pleased to share that the first book in The Cadence Saints series, A Weight of Many, is now available on Amazon.",
+      "Work on the second book has begun. I’m aiming to finish it by the end of 2027, though writing has to fit around my full-time work as a software developer. I’m sorry progress isn’t always as quick as I would like.",
       "Thank you to everyone who has read A Weight of Many or taken an interest in the series. If you enjoyed it, please consider leaving a review; honest reviews help other readers discover the book and mean a great deal to me.",
     ],
     linkUrl: "https://amzn.eu/d/09vWLaPq",
