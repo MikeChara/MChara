@@ -38,7 +38,7 @@ export const recipes: Recipe[] = [
     description:
       "Thin-crust, 12-inch pizzas with a relaxed three-day fridge ferment, a crisp base, and a light, airy edge.",
     image: "/images/recipes/pizza-finished.jpg",
-    category: "Slow-fermented favourite",
+    category: "Frankly, the best pizza you've ever eaten.",
     prepTimeMinutes: 45,
     cookTimeMinutes: 6,
     totalTimeIso: "P3D",

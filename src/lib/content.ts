@@ -16,7 +16,7 @@ export type Project = {
   name: string;
   description: string;
   category: "Software" | "Non-software";
-  status: "Live" | "In development" | "Writing" | "At the table";
+  status: "Live" | "In development" | "Writing" | "In progress" | "At the table";
   url?: string;
   sourceUrl?: string;
 };
@@ -46,6 +46,7 @@ export const projects: Project[] = [
     description: "A personal website bringing together writing, projects, and recipes.",
     category: "Software",
     status: "In development",
+    sourceUrl: "https://github.com/MikeChara/MChara",
   },
   {
     slug: "ice-skating-coach",
@@ -57,16 +58,16 @@ export const projects: Project[] = [
     sourceUrl: "https://github.com/MikeChara/iceskatingcoach",
   },
   {
-    slug: "the-journal",
-    name: "The journal",
-    description: "Personal stories, field notes, and ideas still finding their shape.",
+    slug: "squirrels",
+    name: "I'm building squirrel houses and cafes in my garden",
+    description: "I may or may not share it.",
     category: "Non-software",
-    status: "Writing",
+    status: "In progress",
   },
   {
     slug: "the-recipe-box",
     name: "The recipe box",
-    description: "A growing collection of favourite meals and well-used recipes.",
+    description: "Tasty things, to save in one place so I don't forget them.",
     category: "Non-software",
     status: "At the table",
   },

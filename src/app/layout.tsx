@@ -70,10 +70,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link className="footer-wordmark" href="/">
               Mike Chara
             </Link>
-            <p>Stories, good things, and something worth sharing.</p>
+            <p>Stories, projects, and sometimes things worth sharing.</p>
             <div className="footer-links">
-              <Link href="/blog">Journal</Link>
-              <Link href="/projects">Elsewhere</Link>
+              <Link href="/blog">Blogs and Articles</Link>
+              <Link href="/projects">Projects</Link>
               <Link href="/recipes">The recipe box</Link>
             </div>
             <span className="copyright">

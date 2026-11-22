@@ -96,7 +96,7 @@ export default function ProjectsPage() {
           <header className="project-group-heading">
             <p className="eyebrow">02 / Other projects</p>
             <h2 id="non-software-projects">Non-software projects</h2>
-            <p>Stories, food, random projects.</p>
+            <p>Random projects.</p>
           </header>
           <ConstructionBanner message="This part of the portfolio is still taking shape. More non-software projects and details will be added here." />
           <div className="project-list">
