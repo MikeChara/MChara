@@ -36,20 +36,15 @@ export default function Home() {
           aria-label="A quiet path through a green landscape"
         />
         <div className="hero-content">
-          <p className="eyebrow hero-eyebrow">
-            Writer · maker · curious person
-          </p>
+          <p className="eyebrow hero-eyebrow">Writer · software engineer</p>
           <h1 id="home-title">
-            A life in stories
+            I like stories
             <br />
-            and side roads.
+            and side roads
           </h1>
-          <p className="hero-intro">
-            Notes from wherever curiosity leads: the things I make and the food
-            I keep coming back to.
-          </p>
+          <p className="hero-intro">and building and learning things.</p>
           <Link className="text-link light-link" href="/about">
-            Come on in <span aria-hidden="true">→</span>
+            More about me <span aria-hidden="true">→</span>
           </Link>
         </div>
         <span className="hero-caption">
@@ -63,7 +58,7 @@ export default function Home() {
       >
         <div className="section-heading">
           <div>
-            <p className="eyebrow">From the journal</p>
+            <p className="eyebrow">Blogs and articles</p>
             <h2 id="featured-title">Latest story</h2>
           </div>
           <Link className="text-link" href="/blog">
@@ -98,27 +93,23 @@ export default function Home() {
         <div className="content-width">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">A few good rabbit holes</p>
-              <h2>Take a look around</h2>
+              <p className="eyebrow">Areas to explore</p>
+              <h2>Behold, my stuff.</h2>
             </div>
           </div>
           <div className="discovery-grid">
             <Link className="discovery-card card-journal" href="/blog">
-              <span className="card-number">01 / WORDS</span>
-              <span className="card-title">The journal</span>
-              <span className="card-description">
-                Stories, observations, and things I had to write down.
-              </span>
+              <span className="card-number">01 / WRITING</span>
+              <span className="card-title">Blogs and Articles</span>
+              <span className="card-description">Wordy.</span>
               <span className="card-arrow" aria-hidden="true">
                 ↗
               </span>
             </Link>
             <Link className="discovery-card card-projects" href="/projects">
-              <span className="card-number">02 / IN PROGRESS</span>
-              <span className="card-title">Projects & places</span>
-              <span className="card-description">
-                Current experiments and corners of the internet.
-              </span>
+              <span className="card-number">02 / Builds</span>
+              <span className="card-title">Projects</span>
+              <span className="card-description">Shiny.</span>
               <span className="card-arrow" aria-hidden="true">
                 ↗
               </span>
@@ -126,9 +117,7 @@ export default function Home() {
             <Link className="discovery-card card-recipes" href="/recipes">
               <span className="card-number">03 / AT THE TABLE</span>
               <span className="card-title">The recipe box</span>
-              <span className="card-description">
-                Favourite things to cook, eat, and make again.
-              </span>
+              <span className="card-description">Tasty.</span>
               <span className="card-arrow" aria-hidden="true">
                 ↗
               </span>
@@ -138,14 +127,15 @@ export default function Home() {
       </section>
 
       <section className="closing-note content-width">
-        <p className="eyebrow">Glad you found your way here</p>
+        <p className="eyebrow">Glad you found your way here.</p>
         <p className="closing-copy">
-          Make yourself at home.
+          To the bottom of the page.
           <br />
-          <span>There’s always something new brewing.</span>
+          <span>Where I have run out of things to say.</span>
         </p>
         <Link className="text-link" href="/about">
-          A little more about me <span aria-hidden="true">→</span>
+          So have another link to the about me page{" "}
+          <span aria-hidden="true">→</span>
         </Link>
       </section>
     </main>

@@ -46,10 +46,10 @@ export default function AboutPage() {
         />
         <div className="about-copy">
           <p>
-            I wrote a book. I’m writing the second one in the series. With a bit
-            of luck, it’ll be ready sometime toward the end of 2027. I work full
-            time so apologies if this timescale is not as fast as you’d like.
-            I’m doing my best.
+            I wrote a book, the first in a three-book series. I’m writing the
+            second one now and with a bit of luck, it’ll be ready sometime
+            toward the end of 2027. I work full time so apologies if this
+            timescale is not as fast as you’d like. I’m doing my best.
           </p>
           <p>
             To those of you who bought the first one, thank you. I hope you
