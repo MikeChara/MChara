@@ -9,6 +9,10 @@ export type Recipe = {
   totalTimeIso: string;
   servings: number;
   equipment: string[];
+  otherIngredients: {
+    title: string;
+    choices: string[];
+  }[];
   ingredients: {
     name: string;
     amount: number;
@@ -52,6 +56,40 @@ export const recipes: Recipe[] = [
       "Airtight containers",
       "Pizza peel",
       "Pizza steel",
+    ],
+    otherIngredients: [
+      {
+        title: "Sauce base",
+        choices: [
+          "Jarred pasta/bolognese sauce, or make your own with crushed peeled plum tomatoes, herbs, finely-diced onion, olive oil and garlic",
+        ],
+      },
+      {
+        title: "Cheese choices, pre- and post-bake",
+        choices: [
+          "Low-moisture mozzarella",
+          "Provolone",
+          "Pecorino for grating",
+          "Any other cheeses",
+        ],
+      },
+      {
+        title: "Topping choice examples, just do whatever you like though",
+        choices: [
+          "Margherita",
+          "Chicken, red jalapeño, peppers and onion",
+          "Pepperoni and chilli oil",
+          "Minced beef or pork with herbs and onion",
+        ],
+      },
+      {
+        title: "Finishing touches",
+        choices: [
+          "Extra-virgin olive oil",
+          "Fresh herbs",
+          "Crushed black pepper",
+        ],
+      },
     ],
     ingredients: [
       { name: "All-purpose flour", amount: 440, unit: "g" },

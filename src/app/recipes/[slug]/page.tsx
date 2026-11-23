@@ -65,10 +65,15 @@ export default async function RecipePage({ params }: RecipePageProps) {
         totalTime: recipe.totalTimeIso,
         recipeYield: `${recipe.servings} servings`,
         recipeCategory: recipe.category,
-        recipeIngredient: recipe.ingredients.map(
-          (ingredient) =>
-            `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`,
-        ),
+        recipeIngredient: [
+          ...recipe.ingredients.map(
+            (ingredient) =>
+              `${ingredient.amount} ${ingredient.unit} ${ingredient.name}`,
+          ),
+          ...recipe.otherIngredients.flatMap((requirement) =>
+            requirement.choices.map((choice) => choice),
+          ),
+        ],
         recipeInstructions: recipe.instructions.map((text, index) => ({
           "@type": "HowToStep",
           position: index + 1,
@@ -130,6 +135,39 @@ export default async function RecipePage({ params }: RecipePageProps) {
           ingredients={recipe.ingredients}
           basePortions={recipe.servings}
         />
+        <section
+          className="other-ingredients"
+          aria-labelledby="other-ingredients-heading"
+        >
+          <div className="other-ingredients-heading">
+            <p className="eyebrow">Build your pizza</p>
+            <h2 id="other-ingredients-heading">Other ingredients</h2>
+          </div>
+          <div className="other-ingredient-grid">
+            {recipe.otherIngredients.map((requirement) => (
+              <section
+                className="other-ingredient-group"
+                aria-labelledby={`${recipe.slug}-${requirement.title
+                  .toLowerCase()
+                  .replace(/\s+/g, "-")}-heading`}
+                key={requirement.title}
+              >
+                <h3
+                  id={`${recipe.slug}-${requirement.title
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")}-heading`}
+                >
+                  {requirement.title}
+                </h3>
+                <ul>
+                  {requirement.choices.map((choice) => (
+                    <li key={choice}>{choice}</li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </div>
+        </section>
         <section
           className="recipe-notes"
           aria-labelledby="recipe-notes-heading"
