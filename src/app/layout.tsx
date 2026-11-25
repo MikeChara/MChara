@@ -60,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/about">About</Link>
               <Link href="/projects">Projects &amp; Clients</Link>
               <Link href="/recipes">Recipes</Link>
+              <Link href="/contact">Contact</Link>
             </nav>
             <Link className="header-note" href="/about">
               A little about me <span aria-hidden="true">↗</span>
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <Link href="/blog">Blogs and Articles</Link>
               <Link href="/projects">Projects &amp; Clients</Link>
               <Link href="/recipes">The recipe box</Link>
+              <Link href="/contact">Contact me</Link>
             </div>
             <span className="copyright">
               © {new Date().getFullYear()} Mike Chara
