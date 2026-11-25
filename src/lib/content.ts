@@ -15,7 +15,7 @@ export type Project = {
   slug: string;
   name: string;
   description: string;
-  category: "Software" | "Non-software";
+  category: "Software" | "Client" | "Non-software";
   status: "Live" | "In development" | "Writing" | "In progress" | "At the table";
   url?: string;
   sourceUrl?: string;
@@ -52,7 +52,7 @@ export const projects: Project[] = [
     slug: "ice-skating-coach",
     name: "Ice skating coach",
     description: "A website for Coach Chantelle, offering ice skating lessons in Slough.",
-    category: "Software",
+    category: "Client",
     status: "Live",
     url: "https://coachchantelle.app",
     sourceUrl: "https://github.com/MikeChara/iceskatingcoach",

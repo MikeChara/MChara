@@ -107,8 +107,8 @@ export default function Home() {
               </span>
             </Link>
             <Link className="discovery-card card-projects" href="/projects">
-              <span className="card-number">02 / Builds</span>
-              <span className="card-title">Projects</span>
+              <span className="card-number">02 / Builds and partnerships</span>
+              <span className="card-title">Projects &amp; clients</span>
               <span className="card-description">Shiny.</span>
               <span className="card-arrow" aria-hidden="true">
                 ↗

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     template: "%s | Mike Chara",
   },
   description:
-    "The official website of author Mike Chara. A Weight of Many is the released book in The Cadence Saints series. Also home to stories, projects, and recipes.",
+    "The official website of author Mike Chara. A Weight of Many is the released book in The Cadence Saints series. Also home to stories, projects, clients, and recipes.",
   authors: [{ name: "Mike Chara", url: siteUrl.toString() }],
   creator: "Mike Chara",
   publisher: "Mike Chara",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: "Mike Chara",
     title: "Mike Chara | Author of A Weight of Many",
     description:
-      "Stories, projects, and recipes from Mike Chara, author of The Cadence Saints series.",
+      "Stories, projects, clients, and recipes from Mike Chara, author of The Cadence Saints series.",
   },
   twitter: {
     card: "summary",
@@ -56,9 +56,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span>Mike Chara</span>
             </Link>
             <nav className="main-nav" aria-label="Main navigation">
-              <Link href="/blog">Journal</Link>
+              <Link href="/blog">Blog</Link>
               <Link href="/about">About</Link>
-              <Link href="/projects">Projects</Link>
+              <Link href="/projects">Projects &amp; Clients</Link>
               <Link href="/recipes">Recipes</Link>
             </nav>
             <Link className="header-note" href="/about">
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <p>Stories, projects, and sometimes things worth sharing.</p>
             <div className="footer-links">
               <Link href="/blog">Blogs and Articles</Link>
-              <Link href="/projects">Projects</Link>
+              <Link href="/projects">Projects &amp; Clients</Link>
               <Link href="/recipes">The recipe box</Link>
             </div>
             <span className="copyright">

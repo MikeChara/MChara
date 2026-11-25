@@ -6,12 +6,13 @@ import { breadcrumbJsonLd, createPageMetadata, webpageJsonLd } from "@/lib/seo";
 import { projects } from "@/lib/content";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Projects",
+  title: "Projects & clients",
   description:
-    "Explore Mike Chara's software projects, web experiments, writing, and creative work beyond the keyboard.",
+    "Explore Mike Chara's software projects, client websites, and creative work beyond the keyboard.",
   path: "/projects",
   keywords: [
     "Mike Chara projects",
+    "Mike Chara clients",
     "web developer",
     "software projects",
     "ice skating coach website",
@@ -25,14 +26,14 @@ export default function ProjectsPage() {
     "@context": "https://schema.org",
     "@graph": [
       webpageJsonLd({
-        name: "Projects",
-        description: "Software and non-software projects by Mike Chara.",
+        name: "Projects & clients",
+        description: "Software projects, client work, and non-software projects by Mike Chara.",
         path: "/projects",
         type: "CollectionPage",
       }),
       breadcrumbJsonLd([
         { name: "Home", path: "/" },
-        { name: "Projects", path: "/projects" },
+        { name: "Projects & clients", path: "/projects" },
       ]),
     ],
   };
@@ -42,13 +43,13 @@ export default function ProjectsPage() {
       <JsonLd data={pageJsonLd} />
       <header className="page-intro">
         <p className="eyebrow">Things</p>
-        <h1>Projects.</h1>
+        <h1>Projects &amp; clients.</h1>
         <p>
           A few things I’ve built, am building, or am otherwise messing around
           with.
         </p>
       </header>
-      <section className="page-content" aria-label="Projects and social links">
+      <section className="page-content" aria-label="Projects, clients, and social links">
         <section className="project-group" aria-labelledby="software-projects">
           <header className="project-group-heading">
             <p className="eyebrow">01 / Digital</p>
@@ -89,12 +90,52 @@ export default function ProjectsPage() {
               ))}
           </div>
         </section>
+        <section className="project-group" aria-labelledby="client-work">
+          <header className="project-group-heading">
+            <p className="eyebrow">02 / Client work</p>
+            <h2 id="client-work">Recent clients</h2>
+            <p>Websites built for other people.</p>
+          </header>
+          <div className="project-list">
+            {projects
+              .filter((project) => project.category === "Client")
+              .map((project) => (
+                <article className="project-item" key={project.slug}>
+                  <p className="eyebrow">{project.status}</p>
+                  <h3>{project.name}</h3>
+                  <p>{project.description}</p>
+                  {(project.url || project.sourceUrl) && (
+                    <div className="project-actions">
+                      {project.url && (
+                        <Link
+                          href={project.url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Visit website <span aria-hidden="true">↗</span>
+                        </Link>
+                      )}
+                      {project.sourceUrl && (
+                        <Link
+                          href={project.sourceUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Source code <span aria-hidden="true">↗</span>
+                        </Link>
+                      )}
+                    </div>
+                  )}
+                </article>
+              ))}
+          </div>
+        </section>
         <section
           className="project-group"
           aria-labelledby="non-software-projects"
         >
           <header className="project-group-heading">
-            <p className="eyebrow">02 / Other projects</p>
+            <p className="eyebrow">03 / Other projects</p>
             <h2 id="non-software-projects">Non-software projects</h2>
             <p>Random projects.</p>
           </header>
