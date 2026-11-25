@@ -4,7 +4,7 @@ import { recipes } from "@/lib/recipes";
 import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/about", "/blog", "/projects", "/recipes", "/contact"];
+  const pages = ["", "/about", "/blog", "/projects", "/recipes"];
 
   return [
     ...pages.map((page) => ({
